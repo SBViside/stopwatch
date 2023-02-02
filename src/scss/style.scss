@@ -18,7 +18,7 @@ body {
 
 .alias {
   position: fixed;
-  bottom: 10px;
+  top: 10px;
   right: 10px;
   color: $gray;
   user-select: none;
@@ -28,13 +28,14 @@ body {
 }
 
 .container {
+  position: relative;
   height: 100vh;
   width: 100vw;
   background-color: $bg_default;
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   flex-direction: column;
 
   &.active {
@@ -106,6 +107,7 @@ body {
 }
 
 .clock__controller {
+  margin-bottom: 30px;
   display: flex;
   gap: 30px;
 
@@ -179,5 +181,75 @@ body {
   }
 
   #reset {
+  }
+}
+
+.clock__laps {
+  flex: 0 0 30%;
+
+  #laps {
+    opacity: 0;
+    width: 500px;
+    max-height: 250px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+
+    transition: all 0.2s ease;
+
+    @media (max-width: 500px) {
+      width: 100vw;
+    }
+
+    &.show {
+      opacity: 1;
+    }
+
+    tr {
+      display: flex;
+      justify-content: space-between;
+
+      &:hover {
+        background-color: #9f9f9f;
+        color: #fdfdfd;
+      }
+
+      th {
+        flex: 0 0 50%;
+        text-align: left;
+        border-bottom: 3px solid $gray;
+      }
+      td {
+        flex: 0 0 50%;
+        padding: 10px;
+      }
+    }
+
+    .laps__header {
+      position: sticky;
+      top: 0;
+      background: lightgray;
+      user-select: none;
+      .id,
+      .time {
+        padding: 10px;
+        font-size: 14px;
+      }
+    }
+
+    /* width */
+    &::-webkit-scrollbar {
+      width: 7px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: $gray;
+    }
   }
 }

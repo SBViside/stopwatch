@@ -18,10 +18,11 @@ controller._play.addEventListener('click', (e) => {
 });
 
 controller._lap.addEventListener('click', (e) => {
-    // CREATE A LAP
+    clock.addLap();
 });
 
 controller._reset.addEventListener('click', (e) => {
+    if (!clock) return;
     clock.reset();
 });
 

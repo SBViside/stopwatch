@@ -5,7 +5,7 @@ export class Clock {
         this.controller = controller;
         this.controller.setActive();
         this.hours = this.minutes = this.seconds = this.milliseconds = 0;
-
+        this.laps = [];
         // SET INTERVAL
         this.updater = setInterval(() => this.incMilliseconds(), 10);
     }
@@ -24,11 +24,20 @@ export class Clock {
     reset() {
         this.controller.unsetActive();
         this.hours = this.minutes = this.seconds = this.milliseconds = 0;
+        this.laps = [];
         Updater.resetHTML();
+        Updater.clearLaps();
 
         // CLEAR INTERVAL
         clearInterval(this.updater);
         this.updater = null;
+    }
+
+    addLap() {
+        if (this.laps.length >= 20) return;
+        const newLap = { id: this.laps.length + 1, time: `${this.hours}:${this.minutes}:${this.seconds},${this.milliseconds}` };
+        this.laps = [newLap, ...this.laps];
+        Updater.updateLaps(newLap);
     }
 
     incHours() {
