@@ -1,3 +1,4 @@
+import { formatter } from "./other/utils.js";
 import { Updater } from "./updater.js";
 
 export class Clock {
@@ -35,7 +36,7 @@ export class Clock {
 
     addLap() {
         if (this.laps.length >= 20) return;
-        const newLap = { id: this.laps.length + 1, time: `${this.hours}:${this.minutes}:${this.seconds},${this.milliseconds}` };
+        const newLap = { id: this.laps.length + 1, time: `${formatter(this.hours)}:${formatter(this.minutes)}:${formatter(this.seconds)},${formatter(this.milliseconds)}` };
         this.laps = [newLap, ...this.laps];
         Updater.updateLaps(newLap);
     }

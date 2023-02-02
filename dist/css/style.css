@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 @font-face {
   font-family: Roboto;
   font-display: swap;
@@ -7,7 +6,6 @@
   font-weight: 500;
   font-style: normal;
 }
-
 @font-face {
   font-family: Roboto;
   font-display: swap;
@@ -15,7 +13,6 @@
   font-weight: 700;
   font-style: normal;
 }
-
 @font-face {
   font-family: Roboto;
   font-display: swap;
@@ -23,7 +20,6 @@
   font-weight: 400;
   font-style: normal;
 }
-
 * {
   margin: 0;
   padding: 0;
@@ -44,9 +40,7 @@ body {
   top: 10px;
   right: 10px;
   color: #5c5c5c;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   text-decoration: none;
   font-weight: 700;
   font-size: 16px;
@@ -62,14 +56,11 @@ body {
   justify-content: flex-end;
   flex-direction: column;
 }
-
 .container.active {
   background-color: #f3f3f3;
 }
 
-.clock__block #clock #seconds::after,
-.clock__block #clock #minutes::after,
-.clock__block #clock #hours::after {
+.clock__block #clock #seconds::after, .clock__block #clock #minutes::after, .clock__block #clock #hours::after {
   position: absolute;
   bottom: -15px;
   left: 50%;
@@ -83,33 +74,42 @@ body {
 .clock__block {
   margin-bottom: 50px;
 }
-
 .clock__block #clock {
   font-size: 100px;
   color: #5c5c5c;
 }
-
+@media (max-width: 668px) {
+  .clock__block #clock {
+    font-size: 80px;
+  }
+  .clock__block #clock #milliseconds {
+    font-size: 42px !important;
+  }
+}
+@media (max-width: 438px) {
+  .clock__block #clock {
+    font-size: 54px;
+  }
+  .clock__block #clock #milliseconds {
+    font-size: 32px !important;
+  }
+}
 .clock__block #clock.active {
   color: #333333;
 }
-
 .clock__block #clock span {
   font-size: inherit;
   position: relative;
 }
-
 .clock__block #clock #milliseconds {
   font-size: 60px;
 }
-
 .clock__block #clock #hours::after {
   content: "ч";
 }
-
 .clock__block #clock #minutes::after {
   content: "мин";
 }
-
 .clock__block #clock #seconds::after {
   content: "с";
 }
@@ -119,7 +119,11 @@ body {
   display: flex;
   gap: 30px;
 }
-
+@media (max-width: 468px) {
+  .clock__controller {
+    gap: 20px;
+  }
+}
 .clock__controller .controller__button {
   padding: 15px;
   border-radius: 50%;
@@ -132,50 +136,51 @@ body {
   border-color: #efefef;
   background-color: #fdfdfd;
 }
-
 .clock__controller .controller__button:hover {
   border-color: #e7e7e7;
   background-color: #f0f0f0;
 }
-
+@media (max-width: 468px) {
+  .clock__controller .controller__button {
+    padding: 10px;
+  }
+}
 .clock__controller .controller__button svg {
   height: 30px;
   width: 30px;
   fill: #1b1b1b;
 }
-
+@media (max-width: 468px) {
+  .clock__controller .controller__button svg {
+    height: 25px;
+    width: 25px;
+  }
+}
 .clock__controller .controller__button:disabled {
   border-color: #ededed;
   background: transparent;
   cursor: default;
 }
-
 .clock__controller .controller__button:disabled svg {
   fill: #9f9f9f;
 }
-
 .clock__controller .controller__button:disabled svg path {
   fill: #9f9f9f;
 }
-
 .clock__controller #play {
   background-color: #333333;
   border-color: #333333;
 }
-
 .clock__controller #play:hover {
   background-color: #464646;
   border-color: #464646;
 }
-
 .clock__controller #play svg {
   fill: #ffffff;
 }
-
 .clock__laps {
   flex: 0 0 30%;
 }
-
 .clock__laps #laps {
   opacity: 0;
   width: 500px;
@@ -188,96 +193,48 @@ body {
   /* Track */
   /* Handle */
 }
-
-.clock__laps #laps.show {
-  opacity: 1;
-}
-
-.clock__laps #laps tr {
-  display: flex;
-  justify-content: space-between;
-}
-
-.clock__laps #laps tr:hover {
-  background-color: #9f9f9f;
-  color: #fdfdfd;
-}
-
-.clock__laps #laps tr th {
-  flex: 0 0 50%;
-  text-align: left;
-  border-bottom: 3px solid #5c5c5c;
-}
-
-.clock__laps #laps tr td {
-  flex: 0 0 50%;
-  padding: 10px;
-}
-
-.clock__laps #laps .laps__header {
-  position: sticky;
-  top: 0;
-  background: lightgray;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
-}
-
-.clock__laps #laps .laps__header .id,
-.clock__laps #laps .laps__header .time {
-  padding: 10px;
-  font-size: 14px;
-}
-
-.clock__laps #laps::-webkit-scrollbar {
-  width: 7px;
-}
-
-.clock__laps #laps::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.clock__laps #laps::-webkit-scrollbar-thumb {
-  background: #5c5c5c;
-}
-
-@media (max-width: 668px) {
-  .clock__block #clock {
-    font-size: 80px;
-  }
-
-  .clock__block #clock #milliseconds {
-    font-size: 42px !important;
-  }
-}
-
 @media (max-width: 500px) {
   .clock__laps #laps {
     width: 100vw;
   }
 }
-
-@media (max-width: 468px) {
-  .clock__controller {
-    gap: 20px;
-  }
-
-  .clock__controller .controller__button {
-    padding: 10px;
-  }
-
-  .clock__controller .controller__button svg {
-    height: 25px;
-    width: 25px;
-  }
+.clock__laps #laps.show {
+  opacity: 1;
 }
-
-@media (max-width: 438px) {
-  .clock__block #clock {
-    font-size: 54px;
-  }
-
-  .clock__block #clock #milliseconds {
-    font-size: 32px !important;
-  }
+.clock__laps #laps tr {
+  display: flex;
+  justify-content: space-between;
+}
+.clock__laps #laps tr:hover {
+  background-color: #9f9f9f;
+  color: #fdfdfd;
+}
+.clock__laps #laps tr th {
+  flex: 0 0 50%;
+  text-align: left;
+  border-bottom: 3px solid #5c5c5c;
+}
+.clock__laps #laps tr td {
+  flex: 0 0 50%;
+  padding: 10px;
+}
+.clock__laps #laps .laps__header {
+  position: sticky;
+  top: 0;
+  background: lightgray;
+  user-select: none;
+}
+.clock__laps #laps .laps__header .id,
+.clock__laps #laps .laps__header .time {
+  padding: 10px;
+  font-size: 14px;
+}
+.clock__laps #laps::-webkit-scrollbar {
+  width: 7px;
+}
+.clock__laps #laps::-webkit-scrollbar-track {
+  background: transparent;
+}
+.clock__laps #laps::-webkit-scrollbar-thumb {
+  background: #5c5c5c;
 }
